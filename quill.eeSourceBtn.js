@@ -3,30 +3,27 @@ class eeSourceBtn {
 
     let theClass = this;
 
-    //add source btn to all tool bar
-    document.querySelectorAll(".ql-toolbar").forEach(toolbarEl => {
+    theClass.addDom(quill);
+    quill.on('text-change', (delta, oldDelta, source)=>{
+      theClass.replaceSourceEditorContent(quill)
+    })
+    
+    //create btn
+    let button = document.createElement("button");
+    //display button text
+    button.innerHTML = ">_";
+    button.onclick = function() {
+      theClass.showSourceEditor(quill);
+    };
 
-      theClass.addDom(quill);
-      quill.on('text-change', (delta, oldDelta, source)=>{
-        theClass.replaceSourceEditorContent(quill)
-      })
-      
-      //create btn
-      let button = document.createElement("button");
-      //display button text
-      button.innerHTML = ">_";
-      button.onclick = function() {
-        theClass.showSourceEditor(quill);
-      };
-
-      //create btn container
-      let buttonContainer = document.createElement("span");
-      buttonContainer.setAttribute("class", "ql-formats");
-      buttonContainer.appendChild(button);
-      
-      //add to toolbar
-      toolbarEl.appendChild(buttonContainer);
-    });
+    //create btn container
+    let buttonContainer = document.createElement("span");
+    buttonContainer.setAttribute("class", "ql-formats ee-flag-source");
+    buttonContainer.appendChild(button);
+    
+    //add to toolbar
+    quill.container.previousSibling.appendChild(buttonContainer);
+    
   }
 
   //add dom for source editor
