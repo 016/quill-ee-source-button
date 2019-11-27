@@ -1,5 +1,6 @@
 # quill-ee-source-button
-  show source button for quill editor, working with quill-vue-editor
+    show source button for quill editor, working with quill-vue-editor
+    support quill-2.0.0-dev 3|4|5 + quill-1.*
 
 # usage 
     import { eeSourceBtn } from '@/components/quill/quill.eeSourceBtn.js';
